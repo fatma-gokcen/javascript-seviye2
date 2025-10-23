@@ -56,5 +56,56 @@ Promise.resolve().then(() => console.log("3"));
 
 console.log("4");
 
+// PROMİSE : JavaScriptin bir işlemi şimdi değil gelecekte bitirebileceğini söyleyen yapıdır.
+// "“Henüz hazır değilim ama hazır olunca sana haber vereceğim!”"
+
+
+// Promise üç durumda olabilir:
+
+// Pending (Bekliyor) — işlem devam ediyor
+// Resolved (Başarılı) — işlem tamamlandı
+// Rejected (Hatalı) — işlem başarısız oldu
+
+const soz = new Promise((resolve, reject) => {
+    let basarili = true;
+
+    if (basarili) {
+        resolve("İşlem başarıyla tamamlandı!");
+    }
+    else {
+        reject("Bir hata oluştu!");
+    }
+});
+
+soz
+    .then(sonuc => console.log(sonuc))   // resolve tetiklenirse
+    .catch(hata => console.log(hata));   // reject tetiklenirse
+
+// Async/Await : Promises ile çalışmayı daha kolay ve okunabilir hale getiren yapılardır. Normalde Promises .then() ve .catch() ile zincirlenir ama async/await bunları düz bir akış gibi yazar.
+
+// async , Bir fonksiyonun başına async yazarsan o fonksiyon her zaman bir Promise döner.
+
+async function merhaba() {
+    return "Hello!";
+}
+
+merhaba().then(sonuc => console.log(sonuc)); // Hello!
+
+// await : await, sadece async fonksiyonun içinde kullanılır. Bir Promise’in sonuçlanmasını bekler, sonra devam eder.
+
+async function bekle() {
+    console.log("İşlem başlıyor...");
+    await new Promise(resolve => setTimeout(resolve, 2000)); // 2 saniye beklet
+    console.log("İşlem tamamlandı!");
+}
+
+bekle();
+
+// async → fonksiyonu Promise’e dönüştürür
+// await → Promise’in tamamlanmasını bekler
+// Kod akışı senkronmuş gibi görünür ama aslında asenkrondur
+
+
+
 
 
