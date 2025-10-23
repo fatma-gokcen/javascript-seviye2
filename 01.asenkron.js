@@ -105,6 +105,22 @@ bekle();
 // await → Promise’in tamamlanmasını bekler
 // Kod akışı senkronmuş gibi görünür ama aslında asenkrondur
 
+function bekle(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function işlemler() {
+    console.log("1. adım başladı");
+    await bekle(2000); // 2 saniye bekle
+    console.log("2. adım tamamlandı");
+    await bekle(1000);
+    console.log("3. adım bitti");
+}
+
+işlemler();
+
+
+
 
 
 
