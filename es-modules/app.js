@@ -1,3 +1,5 @@
+// İmport: başka bir dosyada export edilmiş kodu içeri almak için kullanılır.
+
 import greet, { sum, multiply } from './math.js';
 
 console.log(sum(3, 4));       // 7
